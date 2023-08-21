@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="dist/output.css" />
+  </head>
+  <body
+    class="h-screen bg-gradient-to-b from-blue-500 to-blue-950 flex flex-col items-center justify-start"
+  >
+    <div id="mainContainer" class="w-full flex flex-col items-center h-full">
+      <div
+        id="header"
+        class="flex border-gray-400 border-solid border-2 rounded-xl h-24 mt-10 flex-row gap-64 justify-center"
+      >
+        <div id="gameLabel" class="flex flex-col font-bold gap-0 m-3">
+          <h2 class="text-white">ROCK</h2>
+          <h2 class="text-white">PAPER</h2>
+          <h2 class="text-white">SCISSORS</h2>
+        </div>
+        <div
+          id="scoreContainer"
+          class="bg-white rounded-xl w-20 flex items-center justify-center flex-col h-3/4 m-3"
+        >
+          <h3>Score</h3>
+          <span id="score" value="0"></span>
+        </div>
+      </div>
+
+      <!-- Container for the game buttons -->
+      <div
+        id="gameContainer"
+        class="grid grid-cols-1 gap-14 mt-16 columns-1 lg:mt-32 xl:mt-32 md:mt-32"
+      >
+        <button id="paperBtn" class="col-span-1">
+          <div
+            class="bg-blue-400 rounded-full h-32 w-32 flex items-center justify-center"
+          >
+            <div
+              class="bg-white rounded-full h-24 w-24 flex items-center justify-center"
+            >
+              <img src="./Resources/images/icon-paper.svg" alt="hand sign" />
+            </div>
+          </div>
+        </button>
+        <button id="scissorsBtn" class="col-span-1">
+          <div
+            class="bg-yellow-400 rounded-full h-32 w-32 flex items-center justify-center"
+          >
+            <div
+              class="bg-white rounded-full h-24 w-24 flex items-center justify-center"
+            >
+              <img src="./Resources/images/icon-scissors.svg" alt="" />
+            </div>
+          </div>
+        </button>
+        <div class="col-span-2 flex justify-center max-w-24">
+          <button id="rockBtn" class="">
+            <div
+              class="bg-red-400 rounded-full h-32 w-32 flex items-center justify-center"
+            >
+              <div
+                class="bg-white rounded-full h-24 w-24 flex items-center justify-center"
+              >
+                <img src="./Resources/images/icon-rock.svg" alt="" />
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div id="selectedContainer"></div>
+      <div id="rulesOverlay"></div>
+    </div>
+    <div id="rules" class="border rounded-xl inline-block mb-10">
+      <button class="text-white h-10 w-20">RULES</button>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
