@@ -1,7 +1,9 @@
 `use strict`;
 
 // Declaring DOM selectors
-
+const rulesBtn = document.getElementById(`rules`);
+const rulesOverlay = document.getElementById(`rulesOverlay`);
+const gameContainer = document.getElementById(`gameContainer`);
 const rock = document.getElementById(`rockBtn`);
 const paper = document.getElementById(`paperBtn`);
 const scissors = document.getElementById(`scissorsBtn`);
@@ -33,6 +35,12 @@ function updateScore(playerWins) {
   }
   score.innerText = playerScore;
 }
+
+// Rules overlay
+
+rulesBtn.addEventListener(`click`, function () {
+  rulesOverlay.style.display = `block`;
+});
 
 // Starting score
 score.innerText = playerScore;

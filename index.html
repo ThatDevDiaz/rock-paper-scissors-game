@@ -11,7 +11,7 @@
   >
     <div
       id="mainContainer"
-      class="min-w-full flex flex-col items-center h-full"
+      class="min-w-full flex flex-col items-center h-full z-30"
     >
       <div
         id="header"
@@ -35,7 +35,7 @@
       <div id="gameContainer" class="grid grid-cols-1 gap-14 mt-16 columns-1">
         <button id="paperBtn" class="col-span-1">
           <div
-            class="bg-blue-500 rounded-full h-32 w-32 flex items-center justify-center"
+            class="bg-blue-500 rounded-full h-32 w-32 flex items-center justify-center hover:bg-blue-300 hover:scale-105 hover:ease-in-out duration-200"
           >
             <div
               class="bg-white rounded-full h-24 w-24 flex items-center justify-center"
@@ -46,7 +46,7 @@
         </button>
         <button id="scissorsBtn" class="col-span-1">
           <div
-            class="bg-yellow-500 rounded-full h-32 w-32 flex items-center justify-center"
+            class="bg-yellow-500 rounded-full h-32 w-32 flex items-center justify-center hover:bg-yellow-300 hover:scale-105 hover:ease-in-out duration-200"
           >
             <div
               class="bg-white rounded-full h-24 w-24 flex items-center justify-center"
@@ -58,7 +58,7 @@
         <div class="col-span-2 flex justify-center max-w-24">
           <button id="rockBtn" class="">
             <div
-              class="bg-red-500 rounded-full h-32 w-32 flex items-center justify-center"
+              class="bg-red-500 rounded-full h-32 w-32 flex items-center justify-center hover:scale-105 hover:bg-red-300 hover:ease-in-out duration-200"
             >
               <div
                 class="bg-white rounded-full h-24 w-24 flex items-center justify-center"
@@ -71,11 +71,50 @@
       </div>
 
       <div id="selectedContainer"></div>
-      <div id="rulesOverlay"></div>
     </div>
     <div id="rules" class="border rounded-xl absolute bottom-10">
       <button class="text-white h-10 w-20">RULES</button>
     </div>
+
+    <!-- overlay content -->
+    <div id="rulesOverlay" class="z-40" hidden><div id="overlayContainer" class="bg-white w-full h-full relative m-auto">
+      <div id="rulesContainer" class="grid grid-cols-1 gap-10 mt-16 columns-1">
+      <div class="col-span-1">
+        <div
+          class="bg-gray-400 rounded-full h-32 w-32 flex items-center justify-center scale-75"
+        >
+          <div
+            class="bg-gray-300 rounded-full h-24 w-24 flex items-center justify-center"
+          >
+            <img src="./Resources/images/icon-paper.svg" alt="hand sign" />
+          </div>
+        </div>
+      </div>
+      <div class="col-span-1">
+        <div
+          class="bg-gray-400 rounded-full h-32 w-32 flex items-center justify-center scale-75"
+        >
+          <div
+            class="bg-gray-300 rounded-full h-24 w-24 flex items-center justify-center"
+          >
+            <img src="./Resources/images/icon-scissors.svg" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2 flex justify-center max-w-24">
+        <div class="">
+          <div
+            class="bg-gray-400 rounded-full h-32 w-32 flex items-center justify-center scale-75"
+          >
+            <div
+              class="bg-gray-300 rounded-full h-24 w-24 flex items-center justify-center"
+            >
+              <img src="./Resources/images/icon-rock.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></div>
     <script src="index.js"></script>
   </body>
 </html>
