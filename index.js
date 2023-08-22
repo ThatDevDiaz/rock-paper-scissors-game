@@ -3,6 +3,7 @@
 // Declaring DOM selectors
 const rulesBtn = document.getElementById(`rules`);
 const rulesOverlay = document.getElementById(`rulesOverlay`);
+const closeRules = document.getElementById(`closeRules`);
 const gameContainer = document.getElementById(`gameContainer`);
 const rock = document.getElementById(`rockBtn`);
 const paper = document.getElementById(`paperBtn`);
@@ -40,6 +41,14 @@ function updateScore(playerWins) {
 
 rulesBtn.addEventListener(`click`, function () {
   rulesOverlay.style.display = `block`;
+  closeRules.style.display = `block`;
+  rulesBtn.style.display = `none`;
+});
+
+closeRules.addEventListener(`click`, function () {
+  rulesOverlay.style.display = `none`;
+  closeRules.style.display = `none`;
+  rulesBtn.style.display = `block`;
 });
 
 // Starting score
