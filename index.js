@@ -37,6 +37,16 @@ function updateScore(playerWins) {
   score.innerText = playerScore;
 }
 
+// Check player selection against computer selection function
+// 1 = computer chose rock
+// 2 = computer chose paper
+// 3 = computer chose scissors
+function whoWins() {
+  if (computerSelection) {
+    return `playerRock`;
+  }
+}
+
 // Rules overlay
 
 rulesBtn.addEventListener(`click`, function () {
@@ -55,11 +65,41 @@ closeRules.addEventListener(`click`, function () {
 score.innerText = playerScore;
 
 rock.addEventListener(`click`, function () {
-  playerSelection = `rock`;
+  playerSelection = 1;
+  computerSelection = generateRandomNumber();
+  if (computerSelection === 1) {
+    console.log(`tie`);
+  } else if (computerSelection === 2) {
+    console.log(`player loses`);
+    updateScore(false);
+  } else {
+    console.log(`computer loses`);
+    updateScore(true);
+  }
 });
 paper.addEventListener(`click`, function () {
-  playerSelection = `paper`;
+  playerSelection = 2;
+  computerSelection = generateRandomNumber();
+  if (computerSelection === 2) {
+    console.log(`tie`);
+  } else if (computerSelection === 3) {
+    console.log(`player loses`);
+    updateScore(false);
+  } else {
+    console.log(`computer loses`);
+    updateScore(true);
+  }
 });
 scissors.addEventListener(`click`, function () {
-  playerSelection = `scissors`;
+  playerSelection = 3;
+  computerSelection = generateRandomNumber();
+  if (computerSelection === 3) {
+    console.log(`tie`);
+  } else if (computerSelection === 1) {
+    console.log(`player loses`);
+    updateScore(false);
+  } else {
+    console.log(`computer loses`);
+    updateScore(true);
+  }
 });
