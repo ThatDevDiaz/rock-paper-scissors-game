@@ -8,6 +8,8 @@ const gameContainer = document.getElementById(`gameContainer`);
 const rock = document.getElementById(`rockBtn`);
 const paper = document.getElementById(`paperBtn`);
 const scissors = document.getElementById(`scissorsBtn`);
+const body = document.getElementById(`body`);
+const bgTriangle = document.getElementById(`bgTriangle`);
 
 const score = document.getElementById(`score`);
 
@@ -41,9 +43,28 @@ function updateScore(playerWins) {
 // 1 = computer chose rock
 // 2 = computer chose paper
 // 3 = computer chose scissors
-function whoWins() {
-  if (computerSelection) {
-    return `playerRock`;
+
+function playerChoice() {
+  bgTriangle.classList.add(`hidden`);
+  if (playerSelection === 1) {
+    rock.classList.add(`ease-in-out`, `duration-700`);
+    rock.classList.add(`scale-125`);
+  } else if (playerSelection === 2) {
+    paper.classList.add(`scale-125`);
+  } else {
+    scissors.classList.add(`scale-125`);
+  }
+}
+
+function computerChoice() {
+  bgTriangle.classList.add(`hidden`);
+  if (computerSelection === 1) {
+    rock.classList.add(`ease-in-out`, `duration-700`);
+    rock.classList.add(`scale-125`);
+  } else if (computerSelection === 2) {
+    paper.classList.add(`scale-125`);
+  } else {
+    scissors.classList.add(`scale-125`);
   }
 }
 
@@ -53,12 +74,16 @@ rulesBtn.addEventListener(`click`, function () {
   rulesOverlay.style.display = `block`;
   closeRules.style.display = `block`;
   rulesBtn.style.display = `none`;
+  body.classList.remove(`from-blue-500`, `to-blue-950`);
+  body.classList.add(`bg-gray-700`);
 });
 
 closeRules.addEventListener(`click`, function () {
   rulesOverlay.style.display = `none`;
   closeRules.style.display = `none`;
   rulesBtn.style.display = `block`;
+  body.classList.remove(`bg-black`);
+  body.classList.add(`from-blue-500`, `to-blue-950`);
 });
 
 // Starting score
@@ -66,7 +91,9 @@ score.innerText = playerScore;
 
 rock.addEventListener(`click`, function () {
   playerSelection = 1;
+  playerChoice();
   computerSelection = generateRandomNumber();
+  computerChoice();
   if (computerSelection === 1) {
     console.log(`tie`);
   } else if (computerSelection === 2) {
@@ -79,7 +106,9 @@ rock.addEventListener(`click`, function () {
 });
 paper.addEventListener(`click`, function () {
   playerSelection = 2;
+  playerChoice();
   computerSelection = generateRandomNumber();
+  computerChoice();
   if (computerSelection === 2) {
     console.log(`tie`);
   } else if (computerSelection === 3) {
@@ -92,7 +121,9 @@ paper.addEventListener(`click`, function () {
 });
 scissors.addEventListener(`click`, function () {
   playerSelection = 3;
+  playerChoice();
   computerSelection = generateRandomNumber();
+  computerChoice();
   if (computerSelection === 3) {
     console.log(`tie`);
   } else if (computerSelection === 1) {
