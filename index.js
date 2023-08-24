@@ -10,8 +10,9 @@ const paper = document.getElementById(`paperBtn`);
 const scissors = document.getElementById(`scissorsBtn`);
 const body = document.getElementById(`body`);
 const bgTriangle = document.getElementById(`bgTriangle`);
-
+const text = document.getElementById(`gameText`);
 const score = document.getElementById(`score`);
+const playAgainBtn = document.getElementById(`playAgain`);
 
 // Declaring JS only variables
 
@@ -34,9 +35,36 @@ function updateScore(playerWins) {
   if (playerWins === true) {
     playerScore++;
   } else if (playerWins === false) {
-    playerScore--;
+    if (playerScore <= 0) {
+      return (playerScore = 0);
+    } else {
+      playerScore--;
+    }
   }
   score.innerText = playerScore;
+}
+
+//  restart game function
+
+// play again function
+
+function continueGame() {
+  rock.classList.remove(`shadow-green-600`, `shadow-xl`, `rounded-full`);
+  rock.classList.remove(`shadow-red-600`, `shadow-xl`, `rounded-full`);
+  paper.classList.remove(`shadow-green-600`, `shadow-xl`, `rounded-full`);
+  paper.classList.remove(`shadow-red-600`, `shadow-xl`, `rounded-full`);
+  scissors.classList.remove(`shadow-green-600`, `shadow-xl`, `rounded-full`);
+  scissors.classList.remove(`shadow-red-600`, `shadow-xl`, `rounded-full`);
+  rock.classList.remove(`scale-125`);
+  paper.classList.remove(`scale-125`);
+  scissors.classList.remove(`scale-125`);
+  playAgainBtn.classList.add(`hidden`);
+  text.classList.add(`hidden`);
+}
+
+// show play again button
+function playAgainShow() {
+  playAgainBtn.classList.remove(`hidden`);
 }
 
 // Check player selection against computer selection function
@@ -45,28 +73,33 @@ function updateScore(playerWins) {
 // 3 = computer chose scissors
 
 function playerChoice() {
-  bgTriangle.classList.add(`hidden`);
   if (playerSelection === 1) {
     rock.classList.add(`ease-in-out`, `duration-700`);
     rock.classList.add(`scale-125`);
   } else if (playerSelection === 2) {
+    paper.classList.add(`ease-in-out`, `duration-700`);
     paper.classList.add(`scale-125`);
   } else {
+    scissors.classList.add(`ease-in-out`, `duration-700`);
     scissors.classList.add(`scale-125`);
   }
 }
 
 function computerChoice() {
-  bgTriangle.classList.add(`hidden`);
   if (computerSelection === 1) {
     rock.classList.add(`ease-in-out`, `duration-700`);
-    rock.classList.add(`scale-125`);
   } else if (computerSelection === 2) {
-    paper.classList.add(`scale-125`);
+    paper.classList.add(`ease-in-out`, `duration-700`);
   } else {
-    scissors.classList.add(`scale-125`);
+    scissors.classList.add(`ease-in-out`, `duration-700`);
   }
 }
+
+// Play again button onclick event
+
+playAgainBtn.addEventListener(`click`, function () {
+  continueGame();
+});
 
 // Rules overlay
 
@@ -95,14 +128,20 @@ rock.addEventListener(`click`, function () {
   computerSelection = generateRandomNumber();
   computerChoice();
   if (computerSelection === 1) {
-    console.log(`tie`);
+    text.classList.remove(`hidden`);
+    text.innerText = `You tied!`;
   } else if (computerSelection === 2) {
-    console.log(`player loses`);
+    text.classList.remove(`hidden`);
+    text.innerText = `You Lost!`;
     updateScore(false);
+    rock.classList.add(`shadow-red-600`, `shadow-xl`, `rounded-full`);
   } else {
-    console.log(`computer loses`);
+    text.classList.remove(`hidden`);
+    text.innerText = `You Win!`;
     updateScore(true);
+    rock.classList.add(`shadow-green-600`, `shadow-xl`, `rounded-full`);
   }
+  playAgainShow();
 });
 paper.addEventListener(`click`, function () {
   playerSelection = 2;
@@ -110,14 +149,20 @@ paper.addEventListener(`click`, function () {
   computerSelection = generateRandomNumber();
   computerChoice();
   if (computerSelection === 2) {
-    console.log(`tie`);
+    text.classList.remove(`hidden`);
+    text.innerText = `You tied!`;
   } else if (computerSelection === 3) {
-    console.log(`player loses`);
+    text.classList.remove(`hidden`);
+    text.innerText = `You Lost!`;
     updateScore(false);
+    paper.classList.add(`shadow-red-600`, `shadow-xl`, `rounded-full`);
   } else {
-    console.log(`computer loses`);
+    text.classList.remove(`hidden`);
+    text.innerText = `You Win!`;
     updateScore(true);
+    paper.classList.add(`shadow-green-600`, `shadow-xl`, `rounded-full`);
   }
+  playAgainShow();
 });
 scissors.addEventListener(`click`, function () {
   playerSelection = 3;
@@ -125,12 +170,18 @@ scissors.addEventListener(`click`, function () {
   computerSelection = generateRandomNumber();
   computerChoice();
   if (computerSelection === 3) {
-    console.log(`tie`);
+    text.classList.remove(`hidden`);
+    text.innerText = `You tied!`;
   } else if (computerSelection === 1) {
-    console.log(`player loses`);
+    text.classList.remove(`hidden`);
+    text.innerText = `You Lost!`;
     updateScore(false);
+    scissors.classList.add(`shadow-red-600`, `shadow-xl`, `rounded-full`);
   } else {
-    console.log(`computer loses`);
+    text.classList.remove(`hidden`);
+    text.innerText = `You Win!`;
     updateScore(true);
+    scissors.classList.add(`shadow-green-600`, `shadow-xl`, `rounded-full`);
   }
+  playAgainShow();
 });

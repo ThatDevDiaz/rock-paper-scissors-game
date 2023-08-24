@@ -116,24 +116,40 @@
         </div>
       </div>
 
-      <div id="selectedContainer"></div>
+      <div id="textContainer">
+        <p class="text-slate-200 text-3xl mt-20" id="gameText"></p>
+      </div>
+      <!-- Play again button -->
+      <div
+        class="rounded-xl absolute top-16 font-bold ease-in-out duration-300"
+      >
+        <button
+          class="text-white h-10 w-20 hover:scale-125 hidden"
+          id="playAgain"
+        >
+          PLAY AGAIN
+        </button>
+      </div>
     </div>
 
-    <!-- Rules containers/buttons -->
-    <div id="rules" class="border rounded-2xl absolute bottom-10">
-      <button class="text-black bg-white rounded-xl h-10 w-20 hover:scale-105">
+    <!-- Rules containers/buttons/play again -->
+    <div class="border rounded-2xl absolute bottom-10">
+      <button
+        class="text-black bg-white rounded-xl h-10 w-20 hover:scale-105"
+        id="rules"
+      >
         RULES
       </button>
     </div>
     <div class="border rounded-xl absolute bottom-10">
       <button
-        class="text-white h-10 w-20 hover:scale-105"
-        hidden
+        class="text-white h-10 w-20 hover:scale-105 hidden"
         id="closeRules"
       >
         CLOSE
       </button>
     </div>
+
     <script src="index.js"></script>
   </body>
 </html>
