@@ -19,6 +19,7 @@ const playAgainBtn = document.getElementById(`playAgain`);
 let playerScore = 0;
 let playerSelection = ``;
 let opponentSelection = ``;
+let gameEnd;
 
 // gameState will be the different states the game is in. when initially loading, or when playing again, game state will start at 1. It will become 2 upon selecting rock, paper, or scissors. Game state 3 will be the result screen. Managing game state will make it easier to keep track of dom manipulation.
 let gameState = 1;
@@ -43,8 +44,6 @@ function updateScore(playerWins) {
   }
   score.innerText = playerScore;
 }
-
-//  restart game function
 
 // play again function
 
@@ -99,6 +98,7 @@ function computerChoice() {
 
 playAgainBtn.addEventListener(`click`, function () {
   continueGame();
+  gameEnd = false;
 });
 
 // Rules overlay
@@ -123,6 +123,9 @@ closeRules.addEventListener(`click`, function () {
 score.innerText = playerScore;
 
 rock.addEventListener(`click`, function () {
+  if (gameEnd === true) {
+    return;
+  }
   playerSelection = 1;
   playerChoice();
   computerSelection = generateRandomNumber();
@@ -142,8 +145,12 @@ rock.addEventListener(`click`, function () {
     rock.classList.add(`shadow-green-600`, `shadow-xl`, `rounded-full`);
   }
   playAgainShow();
+  gameEnd = true;
 });
 paper.addEventListener(`click`, function () {
+  if (gameEnd === true) {
+    return;
+  }
   playerSelection = 2;
   playerChoice();
   computerSelection = generateRandomNumber();
@@ -163,8 +170,12 @@ paper.addEventListener(`click`, function () {
     paper.classList.add(`shadow-green-600`, `shadow-xl`, `rounded-full`);
   }
   playAgainShow();
+  gameEnd = true;
 });
 scissors.addEventListener(`click`, function () {
+  if (gameEnd === true) {
+    return;
+  }
   playerSelection = 3;
   playerChoice();
   computerSelection = generateRandomNumber();
@@ -184,4 +195,5 @@ scissors.addEventListener(`click`, function () {
     scissors.classList.add(`shadow-green-600`, `shadow-xl`, `rounded-full`);
   }
   playAgainShow();
+  gameEnd = true;
 });
